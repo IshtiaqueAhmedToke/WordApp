@@ -1,0 +1,265 @@
+* {
+  border: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+  background-color: #1c1e21;
+}
+
+.input {
+  display: flex;
+  margin-top: 30vh;
+  justify-content: center;
+  align-content: center;
+  color: aliceblue;
+}
+
+.input input {
+  min-width: 300px;
+  text-align: center;
+  min-height: 48px;
+  font-size: 18px;
+  border: 2px solid #025f39;
+  color: aliceblue;
+}
+
+.input input:hover {
+  border: 2px solid #08d17d;
+
+  cursor: cell;
+}
+
+.button {
+  display: flex;
+  margin-top: 80px;
+  justify-content: center;
+  align-content: center;
+}
+
+.button button {
+  min-width: 50px;
+  text-align: center;
+  min-height: 40px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: rgb(83, 81, 81);
+  background-color: aquamarine;
+}
+
+.button button:hover {
+  background-color: rgb(8, 190, 130);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.newModal {
+  display: none;
+
+  height: inherit;
+  min-width: 40vw;
+
+  font-family: "Lilita One", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 42px;
+
+  background-color: #39e29c;
+}
+
+.newModal.View {
+  display: flex;
+  justify-self: center;
+  color: rgb(54, 54, 54);
+  margin-right: auto;
+  margin-left: 6vw;
+
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.input input.newViewSearch {
+  display: flex;
+  position: absolute;
+  margin-top: -25vh;
+  max-height: 30px;
+  color: aliceblue;
+}
+
+.button button.newViewButton {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: -32.5vh;
+  max-height: 20px;
+  text-align: center;
+  margin-left: 25vw;
+  padding: 10px;
+}
+
+p {
+  padding: 10px;
+  text-align: center;
+  color: #070807;
+  background-color: #39e29c;
+}
+
+.img {
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 30vw;
+  margin-right: auto;
+}
+
+.img img {
+  display: none;
+  max-width: auto;
+  height: auto;
+}
+
+.img img.show {
+  display: flex;
+  max-width: auto;
+  max-height: auto;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.wrapper {
+  display: flex;
+  align-content: center;
+  width: 80vw;
+  height: 40vh;
+  align-items: center;
+}
+
+@media (1700px>width) {
+  .input input.newViewSearch {
+    display: flex;
+    margin: -26vh;
+  }
+
+  .button button.newViewButton {
+    display: flex;
+    margin: -26vh;
+  }
+
+  .newModal {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+    margin: 0;
+    background-color: #39e29c;
+  }
+
+  .newModal.View {
+    display: flex;
+
+    color: rgb(54, 54, 54);
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-top: -15vh;
+    width: auto;
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+  .img {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img img {
+    display: none;
+    max-width: 150px;
+    height: auto;
+  }
+
+  .img img.show {
+    display: block;
+    border-radius: 8px;
+  }
+}
+
+@media (800px>width) {
+  .input input.newViewSearch {
+    display: flex;
+    margin: -22vh;
+  }
+
+  .button button.newViewButton {
+    display: flex;
+    margin: -22vh;
+  }
+
+  .newModal {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .newModal.View {
+    display: flex;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(54, 54, 54);
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-top: -15vh;
+    width: auto;
+    padding: 10px;
+
+    border-radius: 8px;
+  }
+
+  .img {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    margin-top: 100px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img img {
+    display: none;
+    max-width: auto;
+    height: auto;
+  }
+
+  .img img.show {
+    display: block;
+    border-radius: 8px;
+  }
+
+  .wrapper {
+    display: flex;
+    align-content: center;
+    width: auto;
+    height: auto;
+    align-items: center;
+  }
+}
