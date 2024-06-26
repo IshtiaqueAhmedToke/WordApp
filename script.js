@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fetch image related to the word
         const imageResponse = await fetch(`https://imagefetch.ishtiaqueahmedtoke.workers.dev/api/fetchImage?query=${inputValue}`);
         const imageData = await imageResponse.json();
-        imageElement.src = imageData.results[0].urls.thumb;
+  
+        imageElement.src = imageData.results[0].urls.small_s3;
         imageElement.classList.add('show'); // Ensure the image is shown
        
         // Show modal

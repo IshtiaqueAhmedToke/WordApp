@@ -13,22 +13,22 @@
     <link rel="stylesheet" href="styles.css" />
     <title>WordApp</title>
   </head>
+
   <body>
-    <div class="input">
-      <input type="text" id="inputWord" placeholder="Enter Word Here" />
+    <div class="inputBox">
+      <div class="input">
+        <input type="text" id="inputWord" placeholder="Enter Word Here" />
+      </div>
+
+      <div class="button">
+        <button id="fetchWord">Fetch Word</button>
+      </div>
     </div>
 
-    <div class="button">
-      <button id="fetchWord">Fetch Word</button>
-    </div>
+    <div class="newModal">
+      <p id="para"></p>
 
-    <div class="wrapper">
-      <div class="newModal">
-        <p id="para"></p>
-      </div>
-      <div class="img">
-        <img src="" alt="IMAGE" id="IMAGE_ID" />
-      </div>
+      <img src="" alt="IMAGE" id="IMAGE_ID" />
     </div>
 
     <script src="script.js"></script>
