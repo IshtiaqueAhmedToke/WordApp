@@ -1,69 +1,34 @@
-const card = document.querySelector('.newModal');
-const button = document.getElementById('fetchWord');
-const para = document.getElementById('para');
-const imgElement = document.getElementById('IMAGE_ID');
-let buttonCounter = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const fetchWordButton = document.getElementById('fetchWord');
+  const inputWord = document.getElementById('inputWord');
+  const para = document.getElementById('para');
+  const imageElement = document.getElementById('IMAGE_ID');
 
-async function fetchWordMeaning() {
-  try {
-    const input = document.getElementById('inputWord').value.toLowerCase();
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${input}`);
-    const data = await response.json();
-    const res = data[0].meanings[0].definitions[0].definition;
-    para.textContent = res;
+  fetchWordButton.addEventListener('click', async () => {
+    const inputValue = inputWord.value.trim();
+    if (inputValue) {
+      try {
+        // Fetch word meaning
+        const wordResponse = await fetch(`https://imagefetch.ishtiaqueahmedtoke.workers.dev/api/fetchWordMeaning?input=${inputValue}`);
+        const wordData = await wordResponse.json();
+        const meaning = wordData[0]?.meanings[0]?.definitions[0]?.definition || 'Meaning not found';
+     
+        para.textContent = meaning;
 
-    card.classList.toggle('View');
-
-    if (card.firstChild !== 0) {
-      document.querySelector('.input input').classList.add('newViewSearch');
-      document.querySelector('.button button').classList.add('newViewButton');
-      document.querySelector('.img img').classList.add('show');
+        // Fetch image related to the word
+        const imageResponse = await fetch(`https://imagefetch.ishtiaqueahmedtoke.workers.dev/api/fetchImage?query=${inputValue}`);
+        const imageData = await imageResponse.json();
+        imageElement.src = imageData.results[0].urls.thumb;
+        imageElement.classList.add('show'); // Ensure the image is shown
+       
+        // Show modal
+        const modal = document.querySelector('.newModal');
+        modal.classList.add('View'); // Ensure the modal is shown
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     } else {
-      document.querySelector('.input input').classList.toggle('newViewSearch');
-      document.querySelector('.button button').classList.toggle('newViewButton');
-      document.querySelector('.img img').classList.toggle('show');
+      para.textContent = 'Please enter a word.';
     }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function fetchImage() {
-  const url = 'https://api.unsplash.com/search/photos';
-  const input = document.getElementById('inputWord').value.toLowerCase();
-  const apiKey = 'YOUR_UNSPLASH_API_KEY';
-  const query = `query=${input}&client_id=${apiKey}&page=1&per_page=1&order_by=relevant`;
-
-  try {
-    const response = await fetch(`${url}?${query}`);
-    const data = await response.json();
-
-    if (data.results && data.results.length > 0) {
-      const imageSrc = data.results[0].urls.thumb;
-      imgElement.src = imageSrc;
-      console.log(imageSrc);
-    } else {
-      console.log('No image found');
-      imgElement.src = '';  // Clear the image source if no result is found
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function renderQueue() {
-  if (card.firstChild !== 0) {
-    para.textContent = '';
-    card.classList.remove('View');
-    imgElement.src = '';
-    imgElement.classList.remove('show');
-  }
-}
-
-function buttonHandler() {
-  renderQueue();
-  fetchWordMeaning();
-  fetchImage();
-}
-
-button.addEventListener('click', buttonHandler);
+  });
+});
