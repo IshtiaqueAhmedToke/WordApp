@@ -31,12 +31,13 @@ async function fetchWordMeaning() {
 async function fetchImage() {
   const url = 'https://api.unsplash.com/search/photos';
   const input = document.getElementById('inputWord').value.toLowerCase();
-  const query = `query=${input}&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_API_KEY}`;
+  const apiKey = 'YOUR_UNSPLASH_API_KEY';
+  const query = `query=${input}&client_id=${apiKey}&page=1&per_page=1&order_by=relevant`;
 
   try {
     const response = await fetch(`${url}?${query}`);
     const data = await response.json();
-    const imageSrc = data.results[0].urls.thumb;
+    const imageSrc = data.results[0]?.urls.thumb || '';  // Safe navigation in case there are no results
     imgElement.src = imageSrc;
 
     console.log(imageSrc);
