@@ -37,10 +37,15 @@ async function fetchImage() {
   try {
     const response = await fetch(`${url}?${query}`);
     const data = await response.json();
-    const imageSrc = data.results[0]?.urls.thumb || '';  // Safe navigation in case there are no results
-    imgElement.src = imageSrc;
 
-    console.log(imageSrc);
+    if (data.results && data.results.length > 0) {
+      const imageSrc = data.results[0].urls.thumb;
+      imgElement.src = imageSrc;
+      console.log(imageSrc);
+    } else {
+      console.log('No image found');
+      imgElement.src = '';  // Clear the image source if no result is found
+    }
   } catch (error) {
     console.error(error);
   }
